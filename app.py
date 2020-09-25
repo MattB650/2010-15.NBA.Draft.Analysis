@@ -54,7 +54,7 @@ app.layout = html.Div([
         html.Div([
             dcc.Markdown("""
                 **Hover Data**
-                Mouse over a point to reveal team and lineup.
+                Mouse over a point to reveal player and selected advanced metrics.
             """),
             html.Pre(id='hover-data', style=styles['pre'])
         ], className='three columns'),
