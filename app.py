@@ -63,15 +63,7 @@ app.layout = html.Div([
             dcc.Markdown("""
                 **Description**
             
-                This plot includes the best 5-man lineup (min. 100
-                possessions played, per CleaningTheGlass) from each
-                2018-19 NBA team. The two metrics used are D-RAPTOR
-                (per FiveThirtyEight) and SY Q-RAD (per Andrew Patton
-                and B-Ball Index), with the latter looking at how
-                much on average a defender deterrs an offensive player
-                from attempting high efficiency shots (corner threes,
-                layups, etc.). This plot aims to provide an alternative
-                way to measure team defense.
+               
                 """),
                 html.Pre(id='description', style=styles['pre'])
             ], className='three columns')
