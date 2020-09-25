@@ -23,7 +23,7 @@ fig = px.scatter(sheet, x='VA', y='Adjusted Draft Score', color='Adjusted Draft 
                  title='NBA 2010-15 Drafts: Floor Impact Counter vs Adjusted Draft Score',
                  hover_data=(['Player', 'Pos', 'Year', 'FIC', 'Adjusted Draft Score']))
 
-fig.update_traces(mode='markers', marker_size=15)
+fig.update_traces(mode='markers', marker_size=13)
 
 fig.update_layout(
     hoverlabel=dict(
