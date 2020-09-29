@@ -7,6 +7,15 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Output, Input
 
+
+
+styles = {
+    'pre': {
+        'border': 'thin lightgrey solid',
+        'overflowX': 'scroll'
+    }
+}
+
 sheet = pd.read_csv('Combined.Draft.csv', index_col=0, encoding='cp1252')
 
 #Remove Rows Where WS is null (Did not play in NBA) (Old Idea)
