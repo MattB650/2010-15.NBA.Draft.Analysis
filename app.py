@@ -59,6 +59,14 @@ app.layout = html.Div([
         id='basic-interactions',
         figure=fig
     ),
+    dcc.Dropdown(
+        options=[
+            {'label': 'Floor Impact Counter', 'value': 'FIC'},
+            {'label': 'Value Added', 'value': 'VA'}
+        ],
+        value='FIC'
+    ),
+           
 
     html.Div(className='row', children=[
         html.Div([
