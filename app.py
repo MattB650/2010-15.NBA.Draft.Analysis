@@ -16,6 +16,8 @@ styles = {
     }
 }
 
+
+
 sheet = pd.read_csv('Combined.Draft.csv', index_col=0, encoding='cp1252')
 
 #Remove Rows Where WS is null (Did not play in NBA) (Old Idea)
@@ -25,23 +27,12 @@ sheet = pd.read_csv('Combined.Draft.csv', index_col=0, encoding='cp1252')
 sheet = sheet.query('FIC!=0')
 sheet = sheet.query('VA!=0')
 
+choice = sheet[['FIC','VA']]
+
 #Rename Z-Score Column
 sheet['Adjusted Draft Score'] = sheet['Z-Score']
 
 #Set Parameters for Scatter Plot
-fig = px.scatter(sheet, x='VA', y='Adjusted Draft Score', color='Adjusted Draft Score',
-                 title='NBA 2010-15 Drafts: Floor Impact Counter vs Adjusted Draft Score',
-                 hover_data=(['Player', 'Pos', 'Year', 'FIC', 'Adjusted Draft Score']))
-
-fig.update_traces(mode='markers', marker_size=13)
-
-fig.update_layout(
-    hoverlabel=dict(
-        bgcolor="white",
-        font_size=16,
-        font_family="Rockwell"
-    )
-)
 
 
 #Set Style
@@ -56,13 +47,13 @@ server = app.server
 
 app.layout = html.Div([
     dcc.Graph(
-        id='basic-interactions',
-        figure=fig
+        id='scat'
+        #figure=fig
     ),
-    dcc.Dropdown(
+    dcc.Dropdown(id='dropdown',
         options=[
-            {'label': 'Floor Impact Counter', 'value': 'FIC'},
-            {'label': 'Value Added', 'value': 'VA'}
+            {'label': choice, 'value': choice} for choice in choices.unique()
+            
         ],
         value='FIC'
     ),
@@ -88,6 +79,32 @@ app.layout = html.Div([
         ])
     ])
 
+
+@app.callback(
+    Output('scat', 'figure'),
+    Input('dropdown', 'value'))
+
+def update_plot(a_value):
+    
+    if a_value == 'FIC':
+        x = 'FIC'
+    else a_value == 'VA':
+        x='VA'     
+    
+    fig = px.scatter(sheet, x=x, y='Adjusted Draft Score', color='Adjusted Draft Score',
+                 title='NBA 2010-15 Drafts: Floor Impact Counter vs Adjusted Draft Score',
+                 hover_data=(['Player', 'Pos', 'Year', 'FIC', 'Adjusted Draft Score']))
+
+    fig.update_traces(mode='markers', marker_size=13)
+
+    fig.update_layout(
+        hoverlabel=dict(
+            bgcolor="white",
+            font_size=16,
+            font_family="Rockwell"
+        )
+    )
+    return fig
 
 #Run Dash Server
 
