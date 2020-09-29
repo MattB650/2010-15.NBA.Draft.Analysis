@@ -9,11 +9,12 @@ from dash.dependencies import Output, Input
 
 sheet = pd.read_csv('Combined.Draft.csv', index_col=0, encoding='cp1252')
 
-##Remove Rows Where WS is null (Did not play in NBA) (Old Idea)
-##sheet = sheet[sheet['WS'].notna()]
+#Remove Rows Where WS is null (Did not play in NBA) (Old Idea)
+#sheet = sheet[sheet['WS'].notna()]
 
 #Remove Rows Where FIC is null(Did not have pre-draft season that met requirements)
 sheet = sheet.query('FIC!=0')
+sheet = sheet.query('VA!=0')
 
 #Rename Z-Score Column
 sheet['Adjusted Draft Score'] = sheet['Z-Score']
