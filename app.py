@@ -14,7 +14,7 @@ styles = {
     }
 }
 
-sheet = pd.read_csv('~/Desktop/College.Draft.Project/Combined.Draft.csv', index_col=0, encoding='cp1252')
+sheet = pd.read_csv('Combined.Draft.csv', index_col=0, encoding='cp1252')
 
 
 
