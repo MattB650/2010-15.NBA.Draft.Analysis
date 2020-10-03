@@ -85,7 +85,7 @@ def update_plot(a_value):
     if a_value == 'FIC':
 
         fig = px.scatter(sheet, x='FIC', y='Adjusted Draft Score', color='Adjusted Draft Score',
-                         title='NBA 2010-15 Drafts: Floor Impact Counter vs Adjusted Draft Score',
+                         title='NBA 2010-15 Drafts: Floor Impact Counter and Value Added vs. Adjusted Draft Score',
                          hover_data=(['Player', 'Pos', 'Year', 'FIC', 'Adjusted Draft Score']))
 
         fig.update_traces(mode='markers', marker_size=13)
