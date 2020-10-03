@@ -50,8 +50,8 @@ app.layout = html.Div([
 
 
                  ],
-                 value='FIC',
-                 style='inline-block'
+                 value='FIC'
+                 
 
                  ),
 
