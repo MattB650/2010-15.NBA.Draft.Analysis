@@ -50,7 +50,8 @@ app.layout = html.Div([
 
 
                  ],
-                 value='FIC'
+                 value='FIC',
+                 style={'color': '#212121'}
                  
 
                  ),
