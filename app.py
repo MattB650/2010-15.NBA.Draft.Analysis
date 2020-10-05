@@ -69,27 +69,21 @@ app.layout = html.Div([
         html.Div([
             dcc.Markdown("""
                 **Description**
-                This is an analysis of the NBA Drafts from 2010-2015. The goal is to
-                investigate if college/international stats from the year before a propsect
-                was drafted withhold any predictive power; here I chose to calculate 
-                Floor Impact Counter (FIC) and Value Added (VA) for these immediate
-                pre-draft seasons (minimum 15 games played). I regressed FIC and VA against
-                'Adjusted Draft Score', which is a z-score I created using a two-step model.
-                First, I found an online resource that calculated the average percentage of
-                total win shares (WS) by draft pick position, using all drafts since 1989.
-                I made sure to calculate total WS for each draft class I used to normalize
-                across years. Each player's actual WS minus their expected WS by 
-                pick position made up .5 of the 'Draft Score'. The other .5 is composed of
-                taking the average of the next three players by position. For example, the next
-                three forwards taken after Anthony Davis. All players were categorized as 
-                either G F or C. Each player's actual WS minus the next three average player's
-                WS is the formula for this. Combining the two .5 weights equals a player's
-                'Draft Score', and is then standardized into 'Adjusted Draft Score' using
-                the average and standard deviation of Draft Scores from each class. 
+                This is an analysis of the NBA Drafts from 2010-2015. The goal is to investigate if college/international stats 
+                from the year before a propsect was drafted withhold any predictive power; here I chose to calculate 
+                Floor Impact Counter (FIC) and Value Added (VA) for these immediate pre-draft seasons (minimum 15 games played). 
+                I regressed FIC and VA against 'Adjusted Draft Score', which is a z-score I created using a two-step model.
+                First, I found an online resource that calculated the average percentage of total win shares (WS) by draft 
+                pick position, using all drafts since 1989. I made sure to calculate total WS for each draft class I used to normalize
+                across years. Each player's actual WS minus their expected WS by pick position made up .5 of the 'Draft Score'. 
+                The other .5 is composed of taking the average of the next three players by position. For example, the next
+                three forwards taken after Anthony Davis. All players were categorized aseither G F or C. Each player's actual WS 
+                minus the next three average player's WS is the formula for this. Combining the two .5 weights equals a player's
+                'Draft Score', and is then standardized into 'Adjusted Draft Score' using the average and standard deviation of 
+                Draft Scores from each class. 
                 
-                I did not find that FIC or VA held any statistically significant predictive 
-                power for Adjusted Draft Score, but I still enjoyed putting this project 
-                together nonetheless!
+                I did not find that FIC or VA held any statistically significant predictive power for Adjusted Draft Score, but 
+                I still enjoyed putting this project together nonetheless!
 
                 """),
             html.Pre(id='description', style=styles['pre'])
