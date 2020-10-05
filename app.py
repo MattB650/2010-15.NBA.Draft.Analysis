@@ -62,9 +62,15 @@ app.layout = html.Div([
             dcc.Markdown("""
                 **Hover Data**
                 Mouse over a point to reveal player and selected advanced metrics.
+                
+                **Dropdown Box**
+                Use the Dropdown box directly below the plot to select either FIC or VA. 
+                The plot will resize its axis and filter the data accordingly.
+                
+                
             """),
             html.Pre(id='hover-data', style=styles['pre'])
-        ], className='three columns'),
+        ], className='column'),
 
         html.Div([
             dcc.Markdown("""
@@ -87,16 +93,9 @@ app.layout = html.Div([
 
                 """),
             html.Pre(id='description', style=styles['pre'])
-        ], className='three columns'),
+        ], className='column')
         
-        html.Div([
-            dcc.Markdown("""
-                **Dropdown Box**
-                Use the Dropdown box directly below the plot to select either FIC or VA. 
-                The plot will resize its axis and filter the data accordingly.
-                """),
-            html.Pre(id='dro', style=styles['pre'])
-        ], className='three columns')
+        
     ])
 ])
 
