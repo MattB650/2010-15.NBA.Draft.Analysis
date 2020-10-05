@@ -16,9 +16,6 @@ styles = {
 
 sheet = pd.read_csv('Combined.Draft.csv', index_col=0, encoding='cp1252')
 
-
-
-
 # Remove Rows Where FIC is null(Did not have pre-draft season that met requirements)
 sheet = sheet.query('FIC!=0')
 sheet = sheet.query('VA!=0')
@@ -27,7 +24,6 @@ sheet = sheet.query('VA!=0')
 sheet['Adjusted Draft Score'] = sheet['Z-Score']
 
 choices = sheet[['FIC', 'VA']]
-
 
 # Set Style
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
@@ -48,30 +44,12 @@ app.layout = html.Div([
                  options=[
                      {'label': choice, 'value': choice} for choice in choices
 
-
                  ],
                  value='FIC'
-                 
-                       
-                 
 
                  ),
 
     html.Div(className='row', children=[
-        html.Div([
-            dcc.Markdown("""
-                **Hover Data**
-                Mouse over a point to reveal player and selected advanced metrics.
-                
-                **Dropdown Box**
-                Use the Dropdown box directly below the plot to select either FIC or VA. 
-                The plot will resize its axis and filter the data accordingly.
-                
-                
-            """),
-            html.Pre(id='hover-data', style=styles['pre'])
-        ], className='column'),
-
         html.Div([
             dcc.Markdown("""
             **Description**
@@ -90,15 +68,29 @@ app.layout = html.Div([
             player's WS is the formula for this. Combining the two .5 weights equals a player's
             'Draft Score', and is then standardized into 'Adjusted Draft Score' using the average 
             and standard deviation of Draft Scores from each class. 
-                
+
             I did not find that FIC or VA held any statistically significant predictive power 
             for Adjusted Draft Score, but I still enjoyed putting this project together nonetheless!
 
                 """),
             html.Pre(id='description', style=styles['pre'])
-        ], className='column')
-        
-        
+        ], className='one-half column'),
+        html.Div([
+            dcc.Markdown("""
+                **Hover Data**
+                Mouse over a point to reveal player and selected advanced metrics.
+
+                **Dropdown Box**
+                Use the Dropdown box directly below the plot to select either FIC or VA. 
+                The plot will resize its axis and filter the data accordingly.
+
+
+            """),
+            html.Pre(id='hover-data', style=styles['pre'])
+        ], className='one-half column')
+
+
+
     ])
 ])
 
@@ -139,15 +131,8 @@ def update_plot(a_value):
             )
         )
 
-        fig.update_xaxes(range=[0,15])
+        fig.update_xaxes(range=[0, 15])
         return fig
-
-
-
-
-
-
-
 
 
 # Run Dash Server
